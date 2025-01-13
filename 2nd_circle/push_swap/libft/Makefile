@@ -6,7 +6,7 @@
 #    By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 11:20:24 by kuzyilma          #+#    #+#              #
-#    Updated: 2024/12/23 15:52:17 by kuzyilma         ###   ########.fr        #
+#    Updated: 2024/12/06 10:30:50 by kuzyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ $(NAME): $(OFILES)
 	ar rcs $(NAME) $(OFILES)
 
 clean:
-	@rm -f $(OFILES)
+	rm -f $(OFILES)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
