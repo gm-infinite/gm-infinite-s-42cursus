@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 09:43:25 by kuzyilma          #+#    #+#             */
-/*   Updated: 2024/12/23 16:07:13 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:52:42 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int issorted2(t_list_ps *idsmallest, t_list_ps *last)
 	t_list_ps *roamer;
 
 	roamer = idsmallest;
-	while (roamer->id > roamer->next->id)
+	while (roamer->id < roamer->next->id)
 	{
 		roamer = roamer->next;
 		if (roamer->next == idsmallest)
@@ -61,7 +61,7 @@ int issorted(t_list_ps **a, int asize)
 	last = ft_lstlast_ps(*a);
 	last->next = *a;
 	sdistance = 0;
-	while (idsmallest->id != (asize - 1))
+	while (idsmallest->id != 0)
 	{
 		idsmallest = idsmallest->next;
 		sdistance++;

@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 09:42:58 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/13 11:41:08 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:54:48 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,27 @@ static void	ft_lstadd_back_special(t_list_ps **lst, t_list_ps *new)
 		*lst = new;
 }
 
-t_list_ps *stackaset(int argc, char **argv)
+t_list_ps *stackaset(int argc, char **argv, int i)
 {
 	t_list_ps	*stacka;
-	int			i;
+	int	temp;
 
-	i = 1;
 	stacka = NULL;
+	temp = i;
 	while (i < argc)
 	{
 		ft_lstadd_back_special(&stacka, ft_lstnew_ps(ft_atoi(argv[i])));
 		i++;
+	}
+	i = temp;
+	if (i == 0)
+	{
+		while (argv[i] != NULL)
+			{
+				free(argv[i]);
+				i++;
+			}
+		free(argv);
 	}
 	return (stacka);
 }
