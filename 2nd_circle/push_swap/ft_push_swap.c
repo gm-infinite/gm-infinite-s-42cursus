@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 	else
 		ft_turk_alg(&a, &b);
 	issorted(&a, ft_lstsize_ps(a));
-	printa(a);
+	//printa(a);
 	//ft_printf("--------------\n");
 	//printa(b);
 	ft_lstclear_ps(&a);

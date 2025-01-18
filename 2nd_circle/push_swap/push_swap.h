@@ -31,7 +31,7 @@ void		ft_lstadd_front_ps(t_list_ps **lst, t_list_ps *new);
 t_list_ps	*ft_lstlast_ps(t_list_ps *lst);
 void		ft_lstadd_back_ps(t_list_ps **lst, t_list_ps *new);
 void		r_aorb(int ab, t_list_ps **rotate);
-void		threeelementsort(t_list_ps **a, int size);
+void		threeelementsort(t_list_ps **a, int size, int flag);
 int			issorted(t_list_ps **a, int asize);
 void		rr_aorb(int ab, t_list_ps **rotate);
 void		s_aorb(int ab, t_list_ps **swap);
