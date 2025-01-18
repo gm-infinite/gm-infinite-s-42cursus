@@ -52,16 +52,17 @@ int main(int argc, char **argv)
 	isinputcorrect(argc - 1, numberlist, k);
 	a = stackaset(argc, numberlist, (k != 1));
 	b = NULL;
-	printa(a);
+	//printa(a);
 	if (issorted(&a, ft_lstsize_ps(a)) == 1)
 		return (ft_lstclear_ps(&a), 0);
 	if (ft_lstsize_ps(a) < 4)
 		threeelementsort(&a, ft_lstsize_ps(a), 0);
 	else
 		ft_turk_alg(&a, &b);
-	printa(a);
-	ft_printf("--------------\n");
-	printa(b);
+	issorted(&a, ft_lstsize_ps(a));
+	//printa(a);
+	//ft_printf("--------------\n");
+	//printa(b);
 	ft_lstclear_ps(&a);
-	ft_lstclear_ps(&b);
+	//ft_lstclear_ps(&b);
 }

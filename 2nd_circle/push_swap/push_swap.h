@@ -39,4 +39,6 @@ void		ft_turk_alg(t_list_ps **a, t_list_ps **b);
 int			ft_abs(int k);
 int			value_calc(int a, int b);
 int			getbvalue(t_list_ps *a, t_list_ps *b, int size, int rot);
+void		ft_turk_alg_pb(t_list_ps **b, t_list_ps **a);
+int			getavalue(t_list_ps *a, t_list_ps *b, int size, int rot);
 #endif
