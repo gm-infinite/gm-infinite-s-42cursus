@@ -13,7 +13,7 @@
 SRC = ft_push_swap.c ft_isinput_correct.c ft_stack_a_set.c ft_lstps_utils.c \
 the_functions.c ft_lstps_utils2.c ft_three_element_sort.c \
 ft_is_sorted.c turk_alg.c value_calc.c getbvalue.c turk_alg_put_back.c \
-getavalue.c
+getavalue.c ft_normalize_argv.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra

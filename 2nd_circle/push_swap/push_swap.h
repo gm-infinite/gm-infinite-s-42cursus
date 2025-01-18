@@ -21,8 +21,8 @@ typedef struct s_list_ps
 	struct s_list_ps	*next;
 }					t_list_ps;
 
-void		isinputcorrect(int argc, char **argv, int j);
-t_list_ps	*stackaset(int argc, char **argv, int i);
+void		isinputcorrect(int argc, char **argv, char **normal_argv, int argc2);
+t_list_ps	*stackaset(int argc, char **argv);
 int			ft_lstsize_ps(t_list_ps *lst);
 void		ft_lstclear_ps(t_list_ps **lst);
 t_list_ps	*ft_lstnew_ps(int v);
@@ -31,7 +31,7 @@ void		ft_lstadd_front_ps(t_list_ps **lst, t_list_ps *new);
 t_list_ps	*ft_lstlast_ps(t_list_ps *lst);
 void		ft_lstadd_back_ps(t_list_ps **lst, t_list_ps *new);
 void		r_aorb(int ab, t_list_ps **rotate);
-void		threeelementsort(t_list_ps **a, int size, int flag);
+void		threeelementsort(t_list_ps **a, int size);
 int			issorted(t_list_ps **a, int asize);
 void		rr_aorb(int ab, t_list_ps **rotate);
 void		s_aorb(int ab, t_list_ps **swap);
@@ -41,4 +41,5 @@ int			value_calc(int a, int b);
 int			getbvalue(t_list_ps *a, t_list_ps *b, int size, int rot);
 void		ft_turk_alg_pb(t_list_ps **b, t_list_ps **a);
 int			getavalue(t_list_ps *a, t_list_ps *b, int size, int rot);
+char		**ft_normalize_argv(int argc, char **argv, int *k);
 #endif

@@ -99,6 +99,6 @@ void ft_turk_alg(t_list_ps **a, t_list_ps **b)
 		push_best(a, b, ft_lstsize_ps(*a), check);
 		final_push(a, b, check);
 	}
-	threeelementsort(a, ft_lstsize_ps(*a), 0);
+	threeelementsort(a, ft_lstsize_ps(*a));
 	ft_turk_alg_pb(b, a);
 }

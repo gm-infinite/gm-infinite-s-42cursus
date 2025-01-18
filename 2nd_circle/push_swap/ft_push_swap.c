@@ -23,7 +23,7 @@ void printa(t_list_ps *a)
 	}
 }
 
-int wordcount(char **list)
+/* static int wordcount(char **list)
 {
 	int wc;
 
@@ -31,7 +31,7 @@ int wordcount(char **list)
 	while (list[wc] != NULL)
 		wc++;
 	return (wc);
-}
+} */
 
 int main(int argc, char **argv)
 {
@@ -41,16 +41,9 @@ int main(int argc, char **argv)
 	int k;
 
 	k = 0;
-	if (argv[1] != NULL && argc == 2)
-	{
-		numberlist = ft_split(argv[1], ' ');
-		argc = wordcount(numberlist);
-		k = 1;
-	}
-	else
-		numberlist = argv;
-	isinputcorrect(argc - 1, numberlist, k);
-	a = stackaset(argc, numberlist, (k != 1));
+	numberlist = ft_normalize_argv(argc, argv, &k);
+	isinputcorrect(k, argv, numberlist, argc);
+	a = stackaset(k, numberlist);
 	b = NULL;
 	//printa(a);
 	if (issorted(&a, ft_lstsize_ps(a)) == 1)
@@ -60,7 +53,7 @@ int main(int argc, char **argv)
 	else
 		ft_turk_alg(&a, &b);
 	issorted(&a, ft_lstsize_ps(a));
-	//printa(a);
+	printa(a);
 	//ft_printf("--------------\n");
 	//printa(b);
 	ft_lstclear_ps(&a);

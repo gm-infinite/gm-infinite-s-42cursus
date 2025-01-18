@@ -37,27 +37,24 @@ static void	ft_lstadd_back_special(t_list_ps **lst, t_list_ps *new)
 		*lst = new;
 }
 
-t_list_ps *stackaset(int argc, char **argv, int i)
+t_list_ps *stackaset(int argc, char **argv)
 {
 	t_list_ps	*stacka;
 	int	temp;
 
 	stacka = NULL;
-	temp = i;
-	while (i < argc)
+	temp = 0;
+	while (temp < argc)
 	{
-		ft_lstadd_back_special(&stacka, ft_lstnew_ps(ft_atoi(argv[i])));
-		i++;
+		ft_lstadd_back_special(&stacka, ft_lstnew_ps(ft_atoi(argv[temp])));
+		temp++;
 	}
-	i = temp;
-	if (i == 0)
+	temp = 0;
+	while (argv[temp] != NULL)
 	{
-		while (argv[i] != NULL)
-			{
-				free(argv[i]);
-				i++;
-			}
-		free(argv);
+		free(argv[temp]);
+		temp++;
 	}
+	free(argv);
 	return (stacka);
 }
