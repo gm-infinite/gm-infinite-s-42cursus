@@ -15,10 +15,18 @@ the_functions.c ft_lstps_utils2.c ft_three_element_sort.c \
 ft_is_sorted.c turk_alg.c value_calc.c getbvalue.c turk_alg_put_back.c \
 getavalue.c ft_normalize_argv.c
 
+BSRCP = checker_bonus.c             ft_lstps_utils2_bonus.c     ft_stack_a_set_bonus.c      the_functions_bonus.c \
+ft_is_sorted_bonus.c        ft_lstps_utils_bonus.c      get_next_line_bonus.c \
+ft_isinput_correct_bonus.c  ft_normalize_argv_bonus.c the_functions2_bonus.c
+
+BSRC = $(addprefix bonus/, $(BSRCP))
+
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 OSRC = $(SRC:.c=.o)
+
+BOSRC = $(BSRC:.c=.o)
 
 NAME = push_swap
 
@@ -34,11 +42,11 @@ $(NAME): $(OSRC) $(LIBFT)
 	
 clean:
 	make clean -C ./libft
-	rm -f $(OSRC)
+	rm -f $(OSRC) $(BOSRC)
 
 fclean: clean
 	make fclean -C ./libft
-	rm -f $(NAME)
+	rm -f $(NAME) checker
 
 re: fclean all
 
@@ -47,5 +55,8 @@ main: all
 	rm -f $(OSRC)
 	clear
 
-.PHONY: all clean fclean re main
+bonus: $(LIBFT) $(BOSRC)
+	$(CC) $(CFLAGS) $(BOSRC) $(LIBFT) -o checker
+
+.PHONY: all clean fclean re main bonus
 	
