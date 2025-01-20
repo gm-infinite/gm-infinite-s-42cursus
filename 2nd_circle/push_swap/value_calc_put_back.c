@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   value_calc.c                                       :+:      :+:    :+:   */
+/*   value_calc_put_back.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:52:42 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/14 13:55:07 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:40:34 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int value_calc_pb(int a, int b)
+int	value_calc_pb(int a, int b)
 {
-	int abs_a;
-	int abs_b;
-	
+	int	abs_a;
+	int	abs_b;
+
 	abs_a = ft_abs(a);
 	abs_b = ft_abs(b);
 	if ((a < 0 && b < 0) || (a > 0 && b > 0))
@@ -24,4 +24,3 @@ int value_calc_pb(int a, int b)
 	else
 		return (ft_abs(a - b));
 }
-

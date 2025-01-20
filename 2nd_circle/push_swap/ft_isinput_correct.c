@@ -6,26 +6,11 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 09:43:25 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/14 18:01:17 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:10:43 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	error_output(char **argv)
-{
-	int i;
-
-	i = 0;
-	write(2, "Error\n", 6);
-	while (argv[i] != NULL)
-		{
-			free(argv[i]);
-			i++;
-		}
-	free(argv);
-	exit(1);
-}
 
 static void	isduplicate(int argc, char **argv)
 {
@@ -38,7 +23,7 @@ static void	isduplicate(int argc, char **argv)
 		i = argc - 2;
 		while (i >= 0)
 		{
-			if (ft_strncmp(number, argv[i], 11) == 0)
+			if (ft_atoi(number) == ft_atoi(argv[i]))
 				error_output(argv);
 			i--;
 		}
@@ -59,7 +44,7 @@ static void	isallint(int argc, char **argv)
 		i = 0;
 		if (number[i] == '-')
 			size--;
-		if (size > 11)
+		if (size >= 11)
 			error_output(argv);
 		else if (size == 10)
 		{
@@ -84,7 +69,11 @@ static void	isalldigit(int argc, char **argv)
 		number = argv[argc - 1];
 		i = 0;
 		if (number[i] == '-')
+		{
 			i++;
+			if (!(ft_isdigit(number[i])))
+				error_output(argv);
+		}
 		while (number[i] != '\0')
 		{
 			if (!(ft_isdigit(number[i])))
@@ -95,17 +84,25 @@ static void	isalldigit(int argc, char **argv)
 	}
 }
 
-static void isanynull(int argc, char **argv, char **normal_argv)
+static void	isanynull(int argc, char **argv, char **normal_argv)
 {
 	int		i;
+	int		j;
+	char	*v;
 
 	i = 0;
-	while (argc  > i)
+	while (argc > i)
 	{
 		if (argv[i] == NULL)
 			error_output(normal_argv);
-		if (argv[i][0] == '\0')
+		j = 0;
+		v = ft_strtrim(argv[i], " ");
+		if (v[0] == '\0')
+		{
+			free(v);
 			error_output(normal_argv);
+		}
+		free(v);
 		i++;
 	}
 }

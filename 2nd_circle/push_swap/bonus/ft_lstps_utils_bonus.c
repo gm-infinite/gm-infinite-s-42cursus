@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstps_utils.c                                   :+:      :+:    :+:   */
+/*   ft_lstps_utils_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:27:54 by kuzyilma          #+#    #+#             */
-/*   Updated: 2024/12/21 17:05:52 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:46:25 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_list_ps	*ft_lstnew_ps(int v)
 	newnode = malloc(sizeof(t_list_ps));
 	if (!newnode)
 		return (NULL);
-	newnode -> id = 0;
-	newnode -> org_value = v;
-	newnode -> next = NULL;
+	newnode->id = 0;
+	newnode->org_value = v;
+	newnode->next = NULL;
 	return (newnode);
 }
 
@@ -32,8 +32,8 @@ t_list_ps	*ft_lstlast_ps(t_list_ps *lst)
 	if (lst == NULL)
 		return (NULL);
 	roamer = lst;
-	while (roamer -> next != NULL)
-		roamer = roamer -> next;
+	while (roamer->next != NULL)
+		roamer = roamer->next;
 	return (roamer);
 }
 
@@ -46,16 +46,15 @@ int	ft_lstsize_ps(t_list_ps *lst)
 		return (0);
 	size = 1;
 	roamer = lst;
-	while (roamer -> next != NULL)
+	while (roamer->next != NULL)
 	{
-		roamer = roamer -> next;
+		roamer = roamer->next;
 		size++;
 	}
-	
 	return (size);
 }
 
-void		ft_lstclear_ps(t_list_ps **lst)
+void	ft_lstclear_ps(t_list_ps **lst)
 {
 	t_list_ps	*roamer;
 	t_list_ps	*follower;
@@ -66,7 +65,7 @@ void		ft_lstclear_ps(t_list_ps **lst)
 		while (roamer != NULL)
 		{
 			follower = roamer;
-			roamer = roamer -> next;
+			roamer = roamer->next;
 			free(follower);
 		}
 	}
@@ -84,5 +83,5 @@ void	ft_lstadd_front_ps(t_list_ps **lst, t_list_ps *new)
 	}
 	cutter = *lst;
 	*lst = new;
-	(*lst)-> next = cutter;
+	(*lst)->next = cutter;
 }

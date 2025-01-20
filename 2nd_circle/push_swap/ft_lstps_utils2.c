@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:27:54 by kuzyilma          #+#    #+#             */
-/*   Updated: 2024/12/21 17:45:58 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:50:12 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_lstadd_back_ps(t_list_ps **lst, t_list_ps *new)
 	if ((*lst) != NULL)
 	{
 		roamer = ft_lstlast_ps(*lst);
-		roamer -> next = new;
+		roamer->next = new;
 	}
 	else
 		*lst = new;

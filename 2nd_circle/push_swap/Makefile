@@ -6,7 +6,7 @@
 #    By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/21 09:35:01 by kuzyilma          #+#    #+#              #
-#    Updated: 2025/01/14 11:21:17 by kuzyilma         ###   ########.fr        #
+#    Updated: 2025/01/20 13:37:10 by kuzyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,13 +50,14 @@ fclean: clean
 
 re: fclean all
 
-main: all
+main: all bonus
 	make clean -C ./libft
-	rm -f $(OSRC)
+	rm -f $(OSRC) $(BOSRC)
 	clear
 
 bonus: $(LIBFT) $(BOSRC)
 	$(CC) $(CFLAGS) $(BOSRC) $(LIBFT) -o checker
+
 
 .PHONY: all clean fclean re main bonus
 	

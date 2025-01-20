@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 09:58:17 by kuzyilma          #+#    #+#             */
-/*   Updated: 2024/11/24 10:00:16 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:41:18 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static char	*update_saved(char *saved)
 
 static char	*get_the_line(char *saved)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (saved[i] != '\n' && saved[i])

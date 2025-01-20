@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_a_set.c                                   :+:      :+:    :+:   */
+/*   ft_stack_a_set_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 09:42:58 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/14 17:54:48 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:41:15 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,24 @@ static void	ft_lstadd_back_special(t_list_ps **lst, t_list_ps *new)
 		{
 			if (roamer->org_value < new->org_value)
 				new->id++;
-			else 
+			else
 				roamer->id++;
 			roamer = roamer->next;
 		}
-			if (roamer->org_value < new->org_value)
-				new->id++;
-			else 
-				roamer->id++;
-			roamer->next = new;
+		if (roamer->org_value < new->org_value)
+			new->id++;
+		else
+			roamer->id++;
+		roamer->next = new;
 	}
 	else
 		*lst = new;
 }
 
-t_list_ps *stackaset(int argc, char **argv)
+t_list_ps	*stackaset(int argc, char **argv)
 {
 	t_list_ps	*stacka;
-	int	temp;
+	int			temp;
 
 	stacka = NULL;
 	temp = 0;

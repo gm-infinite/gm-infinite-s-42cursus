@@ -1,32 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_functions.c                                    :+:      :+:    :+:   */
+/*   the_functions2_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 14:23:12 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/14 16:24:20 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:25:31 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-
-void rr(t_list_ps **a, t_list_ps **b)
+void	error_output(char **argv)
 {
-	r_aorb(a);
-	r_aorb(b);
+	int	i;
+
+	i = 0;
+	write(2, "Error\n", 6);
+	if (argv == NULL)
+		exit(1);
+	while (argv[i] != NULL)
+	{
+		free(argv[i]);
+		i++;
+	}
+	free(argv);
+	exit(1);
 }
 
-void rrr(t_list_ps **a, t_list_ps **b)
+void	rr(t_list_ps **a, t_list_ps **b)
 {
-	rr_aorb(a);
-	rr_aorb(b);
+	if ((*a) != NULL)
+		r_aorb(a);
+	if ((*b) != NULL)
+		r_aorb(b);
 }
 
-void ss(t_list_ps **a, t_list_ps **b)
+void	rrr(t_list_ps **a, t_list_ps **b)
 {
-	s_aorb(a);
-	s_aorb(b);
+	if ((*a) != NULL)
+		rr_aorb(a);
+	if ((*b) != NULL)
+		rr_aorb(b);
+}
+
+void	ss(t_list_ps **a, t_list_ps **b)
+{
+	if ((*a) != NULL)
+		s_aorb(a);
+	if ((*b) != NULL)
+		s_aorb(b);
 }
