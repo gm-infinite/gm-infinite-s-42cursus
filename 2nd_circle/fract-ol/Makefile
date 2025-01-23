@@ -6,11 +6,11 @@
 #    By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/21 09:35:01 by kuzyilma          #+#    #+#              #
-#    Updated: 2025/01/21 15:42:58 by kuzyilma         ###   ########.fr        #
+#    Updated: 2025/01/23 17:41:17 by kuzyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = circle.c
+SRC = fract-ol.c ft_complex_utils.c ft_coordinate_utils.c mandelbrot.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
