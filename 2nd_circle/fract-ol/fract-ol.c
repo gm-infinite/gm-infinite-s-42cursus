@@ -6,16 +6,21 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:36:24 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/23 17:04:21 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:43:55 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void error_output()
+void error_output(char **argv, int argc)
 {
-	ft_printf("[USAGE] ./fractol mandelbrot");
-	exit (1);
+    if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 12))
+        return ;
+    else if(argc == 4 && !ft_strncmp(argv[1], "julia", 7))
+        return ;
+    else
+	    ft_printf("[USAGE] ./fractol mandelbrot\n[USAGE] ./fractol julia [double] [double]");
+	exit(1);
 }
 
 void ft_put_pixel(t_data *data, int x, int y, int color)
@@ -31,19 +36,11 @@ void ft_put_pixel(t_data *data, int x, int y, int color)
 
 int main(int argc, char **argv)
 {
-	t_data img;
-    void *mlx;
-    void *mlx_win;
+	t_ft_window wnd;
 	
-	if (!ft_strncmp(argv[0], "mandelbrot", 12) || argc != 2)
-		error_output();
-	mlx = mlx_init();
-    mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "fractol");
-    img.img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-    mandelbrot(&img);
-    mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-    mlx_loop(mlx);
-
-
+	error_output(argv, argc);
+	set_ft_window(&wnd, argv);
+    fractals(&wnd, argv);
+    mlx_key_hook(wnd.mlx_window, key_handler, &wnd);
+    mlx_loop((wnd.mlx));
 }
