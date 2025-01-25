@@ -6,12 +6,13 @@
 #    By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/21 09:35:01 by kuzyilma          #+#    #+#              #
-#    Updated: 2025/01/24 17:03:52 by kuzyilma         ###   ########.fr        #
+#    Updated: 2025/01/25 15:21:14 by kuzyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = fract-ol.c ft_complex_utils.c ft_coordinate_utils.c mandelbrot.c ft_window_utils.c ft_color_utils.c \
-color_shift.c ft_hook_handlers.c fractals.c ft_atod.c julia.c
+color_shift.c ft_hook_handlers.c fractals.c ft_atod.c julia.c ft_movement_utils.c ft_complex_utils2.c \
+burning_ship.c hexacorn.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
