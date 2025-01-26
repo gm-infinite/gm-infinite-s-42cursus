@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:36:24 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/25 16:06:03 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/26 10:57:30 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	error_output(char **argv, int argc)
 		ft_printf("[USAGE]:./fractol mandelbrot\n \
        ./fractol julia [double] [double]\n \
        ./fractol burningship\n \
-       ./fractol hexacorn");
+       ./fractol hexacorn\n");
 	exit(1);
 }
 
