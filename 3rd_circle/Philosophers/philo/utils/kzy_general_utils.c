@@ -1,0 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   kzy_general_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/29 14:27:48 by kuzyilma          #+#    #+#             */
+/*   Updated: 2025/01/29 14:50:15 by kuzyilma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../philosophers.h"
+
+long get_time_now()
+{
+    struct timeval t;
+
+    gettimeofday(&t, NULL);
+    return (t.tv_sec * 1000 + t.tv_usec / 1000);
+}
