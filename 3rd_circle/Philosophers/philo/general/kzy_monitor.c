@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:41:25 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/31 11:57:04 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:45:53 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ static void monitor_death(t_data *data)
 	i = 0;
 	while (i < data->input.number_of_philo)
 	{
-		pthread_mutex_lock(data->all_phisolophers[i].death);
-		if (get_time_now() - data->all_phisolophers[i].last_eaten >= data->input.time_to_die)
+		pthread_mutex_lock(data->all_philosophers[i].death);
+		if (get_time_now() - data->all_philosophers[i].last_eaten >= data->input.time_to_die)
 		{
 			pthread_mutex_lock(&(data->write));
 			data->sim_status = 0;
 			printf("%ld %d died\n", get_time_now() - data->start_time, i + 1);
 			pthread_mutex_unlock(&(data->write));
-			pthread_mutex_unlock(data->all_phisolophers[i].death);
+			pthread_mutex_unlock(data->all_philosophers[i].death);
 			break ;
 		}
-		pthread_mutex_unlock(data->all_phisolophers[i].death);
+		pthread_mutex_unlock(data->all_philosophers[i].death);
 		i++;
 	}
 }
@@ -45,7 +45,7 @@ static void monitor_must_eat(t_data *data)
 	{
 		while (i < data->input.number_of_philo)
 		{
-			if (data->all_phisolophers[i].eaten_amouth < data->input.must_eat_number)
+			if (data->all_philosophers[i].eaten_amouth < data->input.must_eat_number)
 				break ;
 			i++;
 		}

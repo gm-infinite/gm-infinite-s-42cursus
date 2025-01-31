@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:42:58 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/31 12:02:02 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:41:18 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ typedef struct s_philosopher
 
 typedef struct s_data {
 	t_input			input;
-	long	start_time;
-	int sim_status;
+	long			start_time;
+	int				sim_status;
+	int				sim_error;
 	pthread_mutex_t	write;
 	pthread_mutex_t *death;
 	pthread_mutex_t	*forks;
-	t_philosopher	*all_phisolophers;
+	t_philosopher	*all_philosophers;
 }					t_data;
 
 t_input	input_init(int argc, char **argv);

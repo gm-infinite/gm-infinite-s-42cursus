@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:32:02 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/31 12:07:29 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:58:01 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,23 @@ static t_philosopher *get_all_philosophers(int nop, t_data *data)
 	return all_philosophers;
 }
 
-static void start_threads(int nop, t_philosopher *all_philosophers)
+static void start_threads(int nop, t_data *data)
 {
 	int i;
+	int	check;
 
 	i = 0;
+	check = 0;
 	while (i < nop)
 	{
-		pthread_create(&(all_philosophers[i].philosopher), NULL, philo_start, &all_philosophers[i]);
+		check = check | pthread_create(&(data->all_philosophers[i].philosopher), NULL, philo_start, &(data->all_philosophers[i]));
 		i++;
-		usleep(100);
+		usleep(80);
+	}
+	if (check != 0)
+	{
+		data->sim_status = 0;
+		data->sim_error = check;
 	}
 }
 
@@ -70,7 +77,8 @@ void data_init(t_data *data, int argc, char **argv)
 	data->forks = get_mutexs(data->input.number_of_philo);
 	data->death = get_mutexs(data->input.number_of_philo);
 	data->sim_status = 1;
+	data->sim_error = 0;
 	pthread_mutex_init(&(data->write), NULL);
-	data->all_phisolophers = get_all_philosophers(data->input.number_of_philo, data);
-	start_threads(data->input.number_of_philo, data->all_phisolophers);
+	data->all_philosophers = get_all_philosophers(data->input.number_of_philo, data);
+	start_threads(data->input.number_of_philo, data);
 }
