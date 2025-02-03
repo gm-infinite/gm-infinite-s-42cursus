@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:42:58 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/31 13:41:18 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:18:59 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ typedef struct s_philosopher
 	long			birthms;
 	long			last_eaten;
 	int				*sim_status;
-	int 			eaten_amouth;
-	struct timeval	timeval;
+	int				eaten_amouth;
 	pthread_t		philosopher;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*death;
@@ -49,21 +48,21 @@ typedef struct s_data {
 	int				sim_status;
 	int				sim_error;
 	pthread_mutex_t	write;
-	pthread_mutex_t *death;
+	pthread_mutex_t	*death;
 	pthread_mutex_t	*forks;
 	t_philosopher	*all_philosophers;
 }					t_data;
 
 t_input	input_init(int argc, char **argv);
-void	error_check(int argc, char** argv);
-void data_init(t_data *data, int argc, char **argv);
-void philo_eat(t_philosopher *p);
-void philo_sleep(t_philosopher *p);
-void *monitor_start(void *thread_arg);
-long get_time_now();
-void write_message(t_philosopher *p, const char *str);
-void *philo_start(void *thread_id);
-void init_monitor(t_data *data);
+int		error_check(int argc, char **argv);
+void	data_init(t_data *data, int argc, char **argv);
+void	philo_eat(t_philosopher *p);
+void	philo_sleep(t_philosopher *p);
+void	*monitor_start(void *thread_arg);
+long	get_time_now(void);
+void	write_message(t_philosopher *p, const char *str);
+void	*philo_start(void *thread_id);
+void	init_monitor(t_data *data);
 
 int		ft_atoi(const char *str);
 int		ft_isdigit(int c);

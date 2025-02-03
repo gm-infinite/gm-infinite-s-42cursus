@@ -6,15 +6,15 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:36:11 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/03 16:16:03 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:14:24 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-t_input	input_init(int argc, char **argv)
+t_input input_init(int argc, char **argv)
 {
-	t_input	ret;
+	t_input ret;
 
 	ret.number_of_philo = ft_atoi(argv[1]);
 	ret.time_to_die = ft_atoi(argv[2]);

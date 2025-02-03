@@ -6,21 +6,22 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:41:25 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/31 13:45:53 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:15:03 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-static void monitor_death(t_data *data)
+static void	monitor_death(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->input.number_of_philo)
 	{
 		pthread_mutex_lock(data->all_philosophers[i].death);
-		if (get_time_now() - data->all_philosophers[i].last_eaten >= data->input.time_to_die)
+		if (get_time_now() - data->all_philosophers[i].last_eaten >= \
+		data->input.time_to_die)
 		{
 			pthread_mutex_lock(&(data->write));
 			data->sim_status = 0;
@@ -34,9 +35,9 @@ static void monitor_death(t_data *data)
 	}
 }
 
-static void monitor_must_eat(t_data *data)
+static void	monitor_must_eat(t_data *data)
 {
-	int i;
+	int	i;
 
 	if (data->sim_status == 0)
 		return ;
@@ -45,7 +46,8 @@ static void monitor_must_eat(t_data *data)
 	{
 		while (i < data->input.number_of_philo)
 		{
-			if (data->all_philosophers[i].eaten_amouth < data->input.must_eat_number)
+			if (data->all_philosophers[i].eaten_amouth < \
+			data->input.must_eat_number)
 				break ;
 			i++;
 		}
@@ -54,9 +56,9 @@ static void monitor_must_eat(t_data *data)
 		data->sim_status = 0;
 }
 
-void *monitor_start(void *thread_arg)
+void	*monitor_start(void *thread_arg)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)thread_arg;
 	while (data->sim_status == 1)
@@ -64,12 +66,12 @@ void *monitor_start(void *thread_arg)
 		monitor_death(data);
 		monitor_must_eat(data);
 	}
-	return NULL;
+	return (NULL);
 }
 
-void init_monitor(t_data *data)
+void	init_monitor(t_data *data)
 {
-	pthread_t monitor;
+	pthread_t	monitor;
 
 	pthread_create(&monitor, NULL, monitor_start, data);
 	pthread_join(monitor, NULL);

@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kzy_input_utils.c                                  :+:      :+:    :+:   */
+/*   kzy_philosopher_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 11:36:11 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/03 16:16:03 by kuzyilma         ###   ########.fr       */
+/*   Created: 2025/02/03 16:27:56 by kuzyilma          #+#    #+#             */
+/*   Updated: 2025/02/03 17:40:14 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-t_input	input_init(int argc, char **argv)
+t_philosopher copy_phisolopher(t_philosopher *p)
 {
-	t_input	ret;
+    t_philosopher ret;
 
-	ret.number_of_philo = ft_atoi(argv[1]);
-	ret.time_to_die = ft_atoi(argv[2]);
-	ret.time_to_eat = ft_atoi(argv[3]);
-	ret.time_to_sleep = ft_atoi(argv[4]);
-	if (argc == 5)
-		ret.must_eat_number = -1;
-	else
-		ret.must_eat_number = ft_atoi(argv[5]);
-	return (ret);
+    sem_init(&(ret.death), 0, 1);
+    ret.sim_status = 1;
+    ret.forks = p->forks;
+    ret.id = p->id;
+    ret.input = p->input;
+    ret.meta_fork = p->meta_fork;
+    ret.pid = p->pid;
+    ret.write = p->write;
+    ret.eaten_amouth = 0;
+    ret.birthms = get_time_now();
+    ret.last_eaten = ret.birthms;
+    return (ret);
 }

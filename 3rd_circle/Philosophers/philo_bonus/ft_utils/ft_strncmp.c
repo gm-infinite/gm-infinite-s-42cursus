@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kzy_input_utils.c                                  :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 11:36:11 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/03 16:16:03 by kuzyilma         ###   ########.fr       */
+/*   Created: 2024/10/11 10:40:11 by kuzyilma          #+#    #+#             */
+/*   Updated: 2025/01/28 11:11:00 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-t_input	input_init(int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_input	ret;
+	size_t	i;
 
-	ret.number_of_philo = ft_atoi(argv[1]);
-	ret.time_to_die = ft_atoi(argv[2]);
-	ret.time_to_eat = ft_atoi(argv[3]);
-	ret.time_to_sleep = ft_atoi(argv[4]);
-	if (argc == 5)
-		ret.must_eat_number = -1;
-	else
-		ret.must_eat_number = ft_atoi(argv[5]);
-	return (ret);
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i] && i < n - 1)
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
