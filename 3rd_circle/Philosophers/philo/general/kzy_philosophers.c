@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:36:24 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/03 16:10:51 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:55:37 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(int argc, char **argv)
 		return (0);
 	data_init(&data, argc, argv);
 	init_monitor(&data);
-	if (data.sim_error != 0)
-		printf("[\e[0;31mERROR\e[0m] pthread_create(...); returned error NO:%d", \
-		data.sim_error);
-	wait_and_destroy(&data);
+	if (data.sim_error == 1)
+		printf("[\e[0;31mERROR\e[0m] pthread_create(...); returned error");
+	if (data.sim_error != 2)
+		wait_and_destroy(&data);
 }

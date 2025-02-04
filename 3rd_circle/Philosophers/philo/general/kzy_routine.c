@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 12:47:29 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/03 16:14:02 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/04 17:02:18 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	*philo_start(void *thread_id)
 	{
 		while (*(p->sim_status) == 1)
 		{
+			write_message(p, "%ld %d is thinking\n");
 			philo_eat(p);
 			philo_sleep(p);
 		}
@@ -61,8 +62,8 @@ void	philo_eat(t_philosopher *p)
 		pthread_mutex_lock(p->death);
 		p->last_eaten = get_time_now();
 		pthread_mutex_unlock(p->death);
-		p->eaten_amouth++;
 		ft_usleep(p->input->time_to_eat, p);
+		p->eaten_amouth++;
 	}
 	pthread_mutex_unlock(p->r_fork);
 	pthread_mutex_unlock(p->l_fork);
@@ -72,5 +73,4 @@ void	philo_sleep(t_philosopher *p)
 {
 	write_message(p, "%ld %d is sleeping\n");
 	ft_usleep(p->input->time_to_sleep, p);
-	write_message(p, "%ld %d is thinking\n");
 }

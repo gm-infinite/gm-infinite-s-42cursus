@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:41:25 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/03 16:15:03 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:33:00 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ void	init_monitor(t_data *data)
 {
 	pthread_t	monitor;
 
-	pthread_create(&monitor, NULL, monitor_start, data);
-	pthread_join(monitor, NULL);
+	if (pthread_create(&monitor, NULL, monitor_start, data) != 0)
+	{
+		data->sim_error = 3;
+		printf("[\e[0;31mERROR\e[0m] pthread_create(...) in init_monitor \
+returned error\n");
+	}
+	else
+		pthread_join(monitor, NULL);
 }

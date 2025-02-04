@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:42:58 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/03 17:13:01 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:07:31 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # include <semaphore.h>
 # include <string.h>
 
-#define CHILD_LIMIT 30920
-
 typedef struct s_input {
 	int	number_of_philo;
 	int	time_to_die;
@@ -37,36 +35,40 @@ typedef struct s_input {
 typedef struct s_philosopher
 {
 	int				id;
-	long			birthms;
+	long			*birthms;
 	long			last_eaten;
-	int 			eaten_amouth;
-	int 			sim_status;
+	int				eaten_amouth;
+	int				sim_status;
 	sem_t			*forks;
 	sem_t			*meta_fork;
 	sem_t			*write;
 	sem_t			death;
+	sem_t			*sim_stop;
 	t_input			*input;
 	pid_t			pid;
 }	t_philosopher;
 
 typedef struct s_data {
 	t_input			input;
+	long			start_time;
 	sem_t			*forks;
 	sem_t			*write;
 	sem_t			*meta_fork;
+	sem_t			*sim_stop;
 	t_philosopher	*all_philosophers;
 }					t_data;
 
 t_input			input_init(int argc, char **argv);
-void			error_check(int argc, char** argv);
+void			error_check(int argc, char **argv);
 void			data_init(t_data *data, int argc, char **argv);
 void			philo_eat(t_philosopher *p);
 void			philo_sleep(t_philosopher *p);
-long 			get_time_now();
+long			get_time_now(void);
 void			write_message(t_philosopher *p, const char *str);
-void			philo_start(t_philosopher *p, t_data *to_free);
+void			philo_start(t_philosopher *p);
 void			init_monitor(t_philosopher *p, pthread_t *monitor);
-t_philosopher	copy_phisolopher(t_philosopher *p);
+void			sem_error(sem_t *forks, sem_t *write, sem_t *sim_stop, \
+sem_t *meta_fork);
 
 int				ft_atoi(const char *str);
 int				ft_isdigit(int c);
