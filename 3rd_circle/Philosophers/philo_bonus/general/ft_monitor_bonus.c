@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kzy_monitor.c                                      :+:      :+:    :+:   */
+/*   ft_monitor_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:41:25 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/04 15:40:05 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:29:19 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philosophers_bonus.h"
 
 static void	monitor_death(t_philosopher *p)
 {
@@ -56,7 +56,7 @@ void	init_monitor(t_philosopher *p, pthread_t *monitor)
 	if (pthread_create(monitor, NULL, monitor_start, p) != 0)
 	{
 		sem_wait(p->write);
-		printf("%d had an problem wehen initiating monitor", p->id);
+		printf("%d had an problem when initiating monitor", p->id);
 		sem_post(p->sim_stop);
 	}
 }

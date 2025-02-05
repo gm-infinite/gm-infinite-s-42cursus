@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 16:30:50 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/26 17:23:19 by kuzyilma         ###   ########.fr       */
+/*   Created: 2024/10/07 15:20:22 by kuzyilma          #+#    #+#             */
+/*   Updated: 2025/02/05 16:29:19 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philosophers_bonus.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_isdigit(int c)
 {
-	int	s_len;
-
-	s_len = ft_strlen(s);
-	while (s_len >= 0)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-		s_len--;
-	}
-	return (NULL);
+	return ((48 <= c) && (c <= 57));
 }

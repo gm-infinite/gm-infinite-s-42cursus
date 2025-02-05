@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 15:00:38 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/26 17:05:13 by kuzyilma         ###   ########.fr       */
+/*   Created: 2024/10/08 13:27:36 by kuzyilma          #+#    #+#             */
+/*   Updated: 2025/02/05 16:29:19 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philosophers_bonus.h"
 
-int	ft_atoi(const char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int		ret_i;
-	int		neg;
-	size_t	k;
+	size_t	i;
 
-	k = 0;
-	neg = 1;
-	while (str[k] == ' ' || ('\t' <= str[k] && str[k] <= '\r'))
-		k++;
-	if ((str[k] == '-' || str[k] == '+'))
+	i = 0;
+	if (dstsize != 0)
 	{
-		if (str[k] == '-')
-			neg = -1;
-		k++;
+		while (src [i] != '\0' && i < dstsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	ret_i = 0;
-	while (ft_isdigit(str[k]))
-	{
-		ret_i = 10 * ret_i + (str[k] - '0');
-		k++;
-	}
-	return (ret_i * neg);
+	return (ft_strlen(src));
 }

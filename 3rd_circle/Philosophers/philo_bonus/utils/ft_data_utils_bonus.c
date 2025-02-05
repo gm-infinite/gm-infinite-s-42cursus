@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kzy_data_utils.c                                   :+:      :+:    :+:   */
+/*   ft_data_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:32:02 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/04 15:43:02 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:29:19 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philosophers_bonus.h"
 
 static t_philosopher	*get_all_philosophers(int nop, t_data *data)
 {
@@ -73,6 +73,7 @@ data->input.number_of_philo);
 	data);
 	if (data->all_philosophers == NULL)
 	{
+		printf("while allocating memory for philo's, malloc returned an error");
 		sem_close(data->forks);
 		sem_close(data->write);
 		sem_close(data->meta_fork);

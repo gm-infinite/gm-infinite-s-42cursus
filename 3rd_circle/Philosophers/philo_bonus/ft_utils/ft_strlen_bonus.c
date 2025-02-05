@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kzy_general_utils.c                                :+:      :+:    :+:   */
+/*   ft_strlen_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 14:27:48 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/04 15:41:48 by kuzyilma         ###   ########.fr       */
+/*   Created: 2024/10/07 16:09:25 by kuzyilma          #+#    #+#             */
+/*   Updated: 2025/02/05 16:29:19 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philosophers_bonus.h"
 
-long	get_time_now(void)
+size_t	ft_strlen(const char *s)
 {
-	struct timeval	t;
+	size_t	len;
 
-	gettimeofday(&t, NULL);
-	return (t.tv_sec * 1000 + t.tv_usec / 1000);
+	len = 0;
+	if (!s)
+		return (0);
+	while (s != NULL && s[len] != '\0')
+		len++;
+	return (len);
 }

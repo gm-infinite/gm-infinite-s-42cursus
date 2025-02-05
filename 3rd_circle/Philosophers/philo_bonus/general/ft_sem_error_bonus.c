@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sem_error.c                                     :+:      :+:    :+:   */
+/*   ft_sem_error_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:39:09 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/04 15:40:47 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:29:19 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
-
-int	sem_error_check(sem_t *sem)
-{
-	if (sem == SEM_FAILED)
-		return (1);
-	return (0);
-}
+#include "../philosophers_bonus.h"
 
 void	sem_error(sem_t *forks, sem_t *write, sem_t *sim_stop, sem_t *meta_fork)
 {
 	int	error;
 
 	error = 0;
-	if (sem_error_check(forks) == 1)
+	if (forks == SEM_FAILED)
 		error += 1;
-	if (sem_error_check(write) == 1)
+	if (write == SEM_FAILED)
 		error += 2;
-	if (sem_error_check(sim_stop) == 1)
+	if (sim_stop == SEM_FAILED)
 		error += 4;
-	if (sem_error_check(meta_fork) == 1)
+	if (meta_fork == SEM_FAILED)
 		error += 8;
 	if (error > 0)
 	{

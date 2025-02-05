@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_calloc_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 16:09:25 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/26 17:23:19 by kuzyilma         ###   ########.fr       */
+/*   Created: 2024/10/11 15:46:45 by kuzyilma          #+#    #+#             */
+/*   Updated: 2025/02/05 16:29:19 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philosophers_bonus.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	len;
+	void	*ans;
 
-	len = 0;
-	if (!s)
+	ans = (void *)malloc(count * size);
+	if (!ans)
 		return (0);
-	while (s != NULL && s[len] != '\0')
-		len++;
-	return (len);
+	ft_bzero(ans, count * size);
+	return (ans);
 }
