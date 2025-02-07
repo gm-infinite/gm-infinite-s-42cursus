@@ -6,7 +6,7 @@
 #    By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/21 09:35:01 by kuzyilma          #+#    #+#              #
-#    Updated: 2025/02/05 16:30:09 by kuzyilma         ###   ########.fr        #
+#    Updated: 2025/02/07 11:49:38 by kuzyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ P_SRC = ft_philosophers_bonus.c ft_error_check_bonus.c ft_routine_bonus.c ft_mon
 SRC = $(addprefix general/, $(P_SRC)) $(addprefix ft_utils/, $(FTUTIL_SRC)) $(addprefix utils/, $(UTIL_SRC))
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 OSRC = $(SRC:.c=.o)
 

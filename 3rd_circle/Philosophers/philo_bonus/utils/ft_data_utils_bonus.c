@@ -6,11 +6,20 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:32:02 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/02/05 16:29:19 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:37:08 by kuzyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers_bonus.h"
+
+static void	close_all_sem(sem_t *forks, sem_t *write, sem_t *sim_stop, \
+sem_t *meta_fork)
+{
+	sem_close(forks);
+	sem_close(write);
+	sem_close(sim_stop);
+	sem_close(meta_fork);
+}
 
 static t_philosopher	*get_all_philosophers(int nop, t_data *data)
 {
@@ -46,12 +55,20 @@ static void	start_childs(int nop, t_data *data)
 	while (i < nop)
 	{
 		pid = fork();
+		if (pid == -1)
+		{
+			printf("fork() returned an error\n");
+			while (--i >= 0)
+				kill(data->all_philosophers[i].pid, SIGKILL);
+			close_all_sem(data->forks, data->write, data->sim_stop, \
+			data->meta_fork);
+			free(data->all_philosophers);
+			exit(1);
+		}
 		if (pid != 0)
 			data->all_philosophers[i].pid = pid;
 		if (pid == 0)
-		{
 			philo_start(&(data->all_philosophers[i]));
-		}
 		i++;
 	}
 }
@@ -74,10 +91,8 @@ data->input.number_of_philo);
 	if (data->all_philosophers == NULL)
 	{
 		printf("while allocating memory for philo's, malloc returned an error");
-		sem_close(data->forks);
-		sem_close(data->write);
-		sem_close(data->meta_fork);
-		sem_close(data->sim_stop);
+		close_all_sem(data->forks, data->write, data->sim_stop, \
+		data->meta_fork);
 		exit (1);
 	}
 	data->start_time = get_time_now();
