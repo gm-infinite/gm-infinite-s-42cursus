@@ -6,7 +6,7 @@
 /*   By: kuzyilma <kuzyilma@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:36:46 by kuzyilma          #+#    #+#             */
-/*   Updated: 2025/01/25 15:46:07 by kuzyilma         ###   ########.fr       */
+/*   Updated: 2025/02/15 18:17:35 by emgenc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ static double	ft_atod2(const char *str, size_t k)
 {
 	double	ret_f;
 	double	ret_s;
-	size_t	i;
 
 	ret_f = 0.0;
 	ret_s = 0.0;
-	i = 0;
 	while (ft_isdigit(str[k]) && str[k] != '\0')
 	{
 		ret_f = 10 * ret_f + (str[k] - '0');
